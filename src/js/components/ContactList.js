@@ -4,18 +4,18 @@ import _ from 'lodash';
 import { contactsFetch } from '../actions/contactsAction';
 
 class ContactList extends Component{
+  
   componentWillMount() {
     this.props.contactsFetch();
   }
 
-  componentWillReceiveProps(nextProps) {
-     this.props.contacts;
-  }
-
   render() {
+    const { contacts } = this.props;
     return (
       <div>
-				contacts
+        { 
+          contacts.length > 0 ? contacts.map((contact, index) => <p key={index}>{contact.username}</p>) : null
+        }
       </div>
     );
   }
